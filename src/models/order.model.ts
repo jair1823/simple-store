@@ -1,6 +1,17 @@
-import {Entity, model, property} from '@loopback/repository';
+import { Entity, model, property } from '@loopback/repository';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_order_customer: {
+        name: 'fk_order_customer',
+        entity: 'Customer',
+        entityKey: 'id_customer',
+        foreignKey: 'id_customer',
+      }
+    }
+  },
+})
 export class Order extends Entity {
   @property({
     type: 'number',
